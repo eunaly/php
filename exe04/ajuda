@@ -1,0 +1,24 @@
+ Arquivo back-end (ex: backend.php)
+ <?php
+$produtos = [
+    "Arroz",
+    "Feijão",
+    "Macarrão",
+    "Óleo",
+    "Açúcar"
+];
+echo json_encode($produtos);
+?>
+ Arquivo front-end (ex: frontend.php)
+ <?php
+$produtos_json = file_get_contents('backend.php');
+$produtos = json_decode($produtos_json);
+
+echo "<h2>Produtos da Loja:</h2><ul>";
+foreach ($produtos as $produto) {
+    echo "<li>$produto</li>";
+}
+echo "</ul>";
+?>
+ O back-end só guarda e retorna os produtos.
+ O front-end só mostra os produtos, pegando eles do back-end.
